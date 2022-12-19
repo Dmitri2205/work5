@@ -1,0 +1,55 @@
+@import "styles/colors_variables.scss";
+
+.shops{
+    &__table>table{
+        background-color: $base_white;
+        padding:0 12px;
+        &>thead>tr>th{
+            border-bottom: none;;
+        }
+        &>tbody>tr{
+            color:$text_grey;
+            &:last-child>td{
+                border-bottom: none;
+            }
+            &>td:last-child>button{
+                margin: 18px 8px 18px 0;
+            }
+        }
+    }
+    button{
+        width: 185px;
+        height:37px;
+        background-color:$button_green;
+        font-size: 12px;
+        margin-bottom: 36px;
+        padding: 12px 20px;
+        &:hover,&:active{
+            background-color:lighten($button_green,10%);
+        }
+        &:last-child{
+            background-color:$button_grey;
+            &:hover,&:active{
+            background-color:lighten($button_grey,10%);
+            }
+        }
+        &>span:first-child{
+            font-size: 20px;
+            font-weight: bold;
+            margin-left: -4px;
+        }
+        &>span:last-child{
+            margin: 0 auto;
+        }
+        &>svg{
+            width: 14px;
+            height: 14px;
+            margin-right: 14px;
+            fill:$icons_white;
+
+        }
+    }
+    h4{
+        margin-bottom: 26px;
+    } 
+}

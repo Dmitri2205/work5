@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import {Logo} from "../img/icons/logo.jsx";
 import {Home} from "../img/icons/home.jsx";
 import {Shopping_cart}  from "../img/icons/shopping_cart.jsx";
@@ -11,10 +11,15 @@ import {Multimedia} from "../img/icons/multimedia.jsx";
 import {Logout} from "../img/icons/logout.jsx";
 import { Offcanvas } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
-import styles from "../styles/sidebar.module.scss";
+import styles from "styles/sidebar.module.scss";
 
 export default function Sidebar() {
   const location = useLocation();
+
+  useEffect(() => {
+    
+    console.log(location.pathname)
+  }, []);
 
   const [links] = useState([
     {
@@ -23,42 +28,42 @@ export default function Sidebar() {
       icon: <Home/>,
     },
     {
-      url: "/shops",
+      url: "/shops?title=Мои магазины",
       name: "Мои магазины",
       icon: <Shopping_cart/>,
     },
     {
-      url: "/promo",
+      url: "/promo?title=Промоматериалы",
       name: "Промоматериалы",
       icon: <Megaphone/>,
     },
     {
-      url: "/stats",
+      url: "/stats?title=Статистика",
       name: "Статистика",
       icon: <Pie_chart/>,
     },
     {
-      url: "/balance",
+      url: "/balance?title=Баланс",
       name: "Баланс",
       icon: <Wallet/>,
     },
     {
-      url: "/personal",
+      url: "/personal?title=Персональные данные",
       name: "Персональные данные",
       icon: <Profile/>,
     },
     {
-      url: "/faq",
+      url: "/faq?title=FAQ",
       name: "FAQ",
       icon: <Information/>,
     },
     {
-      url: "/support",
+      url: "/support?title=Техподдержка",
       name: "Техподдержка",
       icon: <Multimedia/>,
     },
     {
-      url: "/logout",
+      url: "/logout?title=Выход",
       name: "Выход",
       icon: <Logout/>,
     },
@@ -73,12 +78,14 @@ export default function Sidebar() {
       <div className={`d-flex flex-column ${styles.sidebar__links}`}>
         {links.map((link, i) => {
           const { url, name, icon } = link;
+
           return (
             <Link
               to={`${url}`}
               key={url}
+
               className={
-                location.pathname === url ? styles.link_active : undefined
+                location.pathname === url.split("?")[0] ? styles.link_active : undefined
               }
             >
               {icon}

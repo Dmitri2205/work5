@@ -15,6 +15,13 @@
             color: $text_grey;
             text-decoration: none;
             padding-left: 26px;
+            &:hover{
+                color:black;
+                &>svg{
+                    fill:$base_purple;
+ 
+                }
+            }
             &>svg {
                 width:20px;
                 height: 20px;

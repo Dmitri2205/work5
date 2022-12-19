@@ -1,20 +1,27 @@
-import React,{useState} from "react";
+import React,{useEffect, useState} from "react";
 import {Envelop} from "../img/icons/envelope.jsx"
 import { Button,Breadcrumb } from "react-bootstrap";
 import avatar from "../img/avatar.png";
 import styles from "styles/header.module.scss";
+import { useLocation } from 'react-router-dom';
 
 export default function Header() {
 
+  const location = useLocation();
 
   return (
-    <div className={`d-flex flex-row justify-content-between px-0 pt-4 ${styles.header}`}>
+    <div className={`d-flex flex-row justify-content-between px-0 pt-4 pb-3 ${styles.header}`}>
       <Breadcrumb className={styles.header__breadcrumbs}>
-        <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
-        <Breadcrumb.Item href="https://getbootstrap.com/docs/4.0/components/breadcrumb/">
-          Library
+        {location.pathname !== "/" ? 
+        (
+          <>
+          <Breadcrumb.Item href="#">Главная</Breadcrumb.Item>
+          <Breadcrumb.Item href="https://getbootstrap.com/docs/4.0/components/breadcrumb/">
+          {decodeURI(location.search.split("=")[1])}
         </Breadcrumb.Item>
-        <Breadcrumb.Item active>Data</Breadcrumb.Item>
+          </>
+           ) : null
+          }
       </Breadcrumb>
       <div className={`d-flex ${styles.header__controls}`}>
           <Button variant="light" className={`d-flex justify-content-center align-items-center ${styles.envelop}`}><Envelop/></Button>
