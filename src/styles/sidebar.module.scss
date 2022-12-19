@@ -1,0 +1,36 @@
+@import "./colors_variables.scss";
+
+.sidebar{
+    background-color: $base_white;
+    padding:26px 31px 0 0;
+    &__header{
+        padding-left:26px;
+    }
+    &__links{
+        margin-top: 24px;
+        & > a{
+            display: inline-flex;
+            align-items: center;
+            height: 50px;
+            color: $text_grey;
+            text-decoration: none;
+            padding-left: 26px;
+            &>svg {
+                width:20px;
+                height: 20px;
+                margin-right: 21px;
+                transition: all .3s linear;
+            }
+            &.link_active{
+                border-left:4px solid $base_purple;
+                box-sizing: border-box;
+                padding-left:22px;
+                color: black;
+                transition: color .5s linear;
+                &>svg{
+                    fill:$base_purple;
+                }
+            }
+        }
+    }
+}

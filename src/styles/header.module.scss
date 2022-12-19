@@ -1,0 +1,51 @@
+@import "styles/colors_variables.scss";
+
+.header{
+    color: black;
+    &__breadcrumbs{
+        color: cyan;
+    }
+    &__controls{
+        color: black;
+        &>.envelop{
+            width: 66px;
+            height: 66px;
+            border: 1px solid $button_grey !important;
+            position: relative;
+            &::before{
+                content: "";
+                display: inline-flex;
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background-color: #e42626;
+                border: 3px solid #ffffff;
+                position: absolute;
+                top: 18px;
+                right: 16px;
+                box-sizing: content-box;
+            }
+            &>svg{
+                width: 22px;
+                height:18px;
+                fill:$button_grey;
+            }
+        }
+        &>.user_panel{
+            width:256px;
+            height:66px;
+            margin-left:6px;
+            background-color:$base_white;
+            border-radius:5px;
+            &>figure{
+                width: 46px;
+                height: 46px;
+                overflow: hidden;
+                margin:0 0 0 17px;
+            }
+            &>p{
+                color: $text_grey;
+            }
+        }
+    }
+}

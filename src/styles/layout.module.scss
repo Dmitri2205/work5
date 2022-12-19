@@ -1,0 +1,9 @@
+@import "styles/colors_variables.scss";
+
+.layout{
+    height: 100vh;
+    background-color:$content_background;
+    &>.layout__content{
+        padding: 0 16px 0 59px;
+    }
+}
