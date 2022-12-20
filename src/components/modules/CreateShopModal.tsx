@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Button,
   Form,
@@ -59,8 +59,8 @@ export const CreateShopModal = ({showModal,showHandler,addShop}:IModalProps) => 
         onHide={():void=>showHandler(false)}
         centered
       >
-        <Modal.Header closeButton className="border-bottom-0 pb-0 mb-5">
-          <Modal.Title>Создать магазин</Modal.Title>
+        <Modal.Header closeButton className="border-bottom-0 pb-0 mb-5" style={{paddingLeft:"30px",paddingRight:"30px"}}>
+          <Modal.Title className="fw-bold">Создать магазин</Modal.Title>
         </Modal.Header>
         <Modal.Body className={styles.createShop__modalBody}>
           <div
@@ -91,7 +91,8 @@ export const CreateShopModal = ({showModal,showHandler,addShop}:IModalProps) => 
               })}
             </div>
             <div className={`mb-5 ${styles.form__input}`}>
-              <InputGroup className={`${!domainIsValid.isValid ? "invalid" : ''}`}>
+              <p>Домен</p>
+              <InputGroup>
                 <Form.Control
                   placeholder="ivangrozny"
                   aria-label="Domain name"

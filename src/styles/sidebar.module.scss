@@ -1,12 +1,29 @@
 @import "./colors_variables.scss";
+@import "./header.module.scss";
 
 .sidebar{
     background-color: $base_white;
     padding:26px 31px 0 0;
+    @include burger;
+    &__burger{
+        &::before{
+            transform:translateX(0px) translateY(3px) rotateZ(45deg);
+        }
+        &::after{
+            transform:translateX(0px) translateY(-3px) rotateZ(-45deg);
+        }
+    }
+    @media screen and (max-width:992px) {
+        height: 100vh;
+        position: absolute;
+        z-index: 10;
+        transition: all .3s linear;
+    }
     &__header{
         padding-left:26px;
     }
     &__links{
+        font-size: 14px;
         margin-top: 24px;
         & > a{
             display: inline-flex;

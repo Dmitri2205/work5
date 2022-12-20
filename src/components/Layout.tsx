@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import HomePage from "./modules/HomePage";
 import styles from "styles/layout.module.scss";
@@ -20,7 +20,6 @@ export interface ITableItem {
 export default function Layout(props: ILayoutProps) {
   const { children } = props;
   const [showCreateModal,setShowCreateModal] = useState<boolean>(false);
-  const [newShopData,setNewShopData] = useState<ITableItem | null>(null)
   const [tableItems,setTableItems] = useState<Array<ITableItem>>([
     {
        id:25768,
@@ -39,10 +38,11 @@ export default function Layout(props: ILayoutProps) {
      }
 ]); 
 
-const handleShopChange = (idx: number) => {
+const handleShopChange = (data:{id:number,name:string,address:string}) => {
+  const {id} = data
   const newList = [...tableItems];
-  const shopIndex = newList.findIndex((item: ITableItem)=>item.id === idx);
-  if(shopIndex !== -1) newList[shopIndex].address = "changed";
+  const shopIndex = newList.findIndex((item: ITableItem)=>item.id === id);
+  if(shopIndex !== -1) newList[shopIndex] = data
   setTableItems(newList)
 }
 

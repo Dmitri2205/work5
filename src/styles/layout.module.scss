@@ -1,7 +1,7 @@
 @import "styles/colors_variables.scss";
 
 .layout{
-    height: 100%;
+    height: auto;
     &__content{
         padding: 0 16px 0 59px;
         background-color:$content_background;

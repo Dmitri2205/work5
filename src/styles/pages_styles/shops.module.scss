@@ -9,18 +9,20 @@
     &__table{
         width: 100%;
         &>table{
-        background-color: $base_white;
-        padding:0 12px;
+            background-color: $base_white;
+            border-radius: 5px;
+            padding:0 12px;
         &>thead{
             @media screen and (max-width:576px) {
                 display: none;
             }
             &>tr>th{
+                font-size: 14px;
                 border-bottom: none;;
             }
         }
         &>tbody>tr{
-            color:$text_grey;
+            color:$tablerow_color;
             @media screen and (max-width:576px) {
                 width: 100%;
             }
@@ -83,6 +85,8 @@
         }
     }
     h4{
+        font-size: 20px;
+        font-weight: bold;
         margin-bottom: 26px;
     } 
 }

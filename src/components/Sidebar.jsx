@@ -1,4 +1,4 @@
-import React, { useState ,useEffect} from "react";
+import React, { useState } from "react";
 import {Logo} from "../img/icons/logo.jsx";
 import {Home} from "../img/icons/home.jsx";
 import {Shopping_cart}  from "../img/icons/shopping_cart.jsx";
@@ -9,11 +9,10 @@ import {Profile} from "../img/icons/profile.jsx";
 import {Information} from "../img/icons/information.jsx";
 import {Multimedia} from "../img/icons/multimedia.jsx";
 import {Logout} from "../img/icons/logout.jsx";
-import { Offcanvas } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
 import styles from "styles/sidebar.module.scss";
 
-export default function Sidebar() {
+export default function Sidebar({menuOpened,handleOpen}) {
   const location = useLocation();
 
   const [links] = useState([
@@ -65,7 +64,8 @@ export default function Sidebar() {
   ]);
 
   return (
-    <div className={`d-none d-lg-flex flex-column col-3 ${styles.sidebar}`}>
+    <div className={`${menuOpened ? "d-flex" : "d-none"} d-lg-flex flex-column col-sm-5 col-md-4 col-12 ${styles.sidebar}`}>
+      <span className={styles.sidebar__burger} onClick={e=>handleOpen(false)}></span>
       <div className={`${styles.sidebar__header}`}>
         <Logo/>
       </div>

@@ -1,75 +1,110 @@
 @import "styles/colors_variables.scss";
 
+@mixin burger {
+  &__burger {
+    display: inline-flex;
+    width: 24px;
+    height: 24px;
+    border: 1px solid $button_green;
+    border-radius: 5px;
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    &::before,
+    &::after {
+      content: "";
+      display: inline-flex;
+      width: 18px;
+      height: 2px;
+      border-radius: 12px;
+      background-color: $button_green;
+      position: absolute;
+      transition: all 0.2s linear;
+    }
+    &::before {
+      top: 30%;
+      left: 2px;
+    }
+    &::after {
+      bottom: 30%;
+      left: 2px;
+    }
+    &_active {
+      transition: all 0.2s linear;
+    }
+  }
+}
 
-.header{
+.header {
+  color: black;
+  @include burger;
+  &__breadcrumbs > ol > li {
+    display: inline-flex;
+    align-items: baseline;
+    font-size: 12px;
+    color: $breadcrumbs_color;
+    & > a {
+      text-decoration: none;
+      color: inherit;
+    }
+    &:not(:first-child)::before {
+      content: "" !important;
+      background: url("../img/icons/arrow_right.svg");
+      background-size: 7px 9px;
+      width: 7px;
+      height: 9px;
+    }
+  }
+  &__controls {
     color: black;
-    &__breadcrumbs>ol>li{
+    & > .envelop {
+      width: 66px;
+      height: 66px;
+      border: 1px solid $button_grey !important;
+      background-color: $content_background;
+      position: relative;
+      transition: background-color 0.3s linear;
+      &:hover {
+        background-color: lighten($button_grey, 15%);
+      }
+      &::before {
+        content: "";
         display: inline-flex;
-        align-items: baseline;
-        font-size: 12px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: #e42626;
+        border: 3px solid #ffffff;
+        position: absolute;
+        top: 18px;
+        right: 16px;
+        box-sizing: content-box;
+      }
+      & > svg {
+        width: 22px;
+        height: 18px;
+        fill: $icons_grey;
+      }
+    }
+    & > .user_panel {
+      width: 256px;
+      height: 66px;
+      margin-left: 6px;
+      background-color: $base_white;
+      border-radius: 5px;
+      cursor: pointer;
+      & > figure {
+        width: 46px;
+        height: 46px;
+        overflow: hidden;
+        margin: 0 0 0 17px;
+        & > img {
+          height: 100%;
+        }
+      }
+      & > p {
         color: $text_grey;
-        &>a{
-            text-decoration: none;
-            color: inherit;
-        }
-        &:not(:first-child)::before{
-            content: "" !important;
-            background: url("../img/icons/arrow_right.svg");
-            background-size: 7px 9px;
-            width:7px;
-            height:9px;
-        }
+      }
     }
-    &__controls{
-        color: black;
-        &>.envelop{
-            width: 66px;
-            height: 66px;
-            border: 1px solid $button_grey !important;
-            background-color:$content_background;
-            position: relative;
-            transition: background-color .3s linear;
-            &:hover{
-                background-color: lighten($button_grey,15%);
-            }
-            &::before{
-                content: "";
-                display: inline-flex;
-                width: 8px;
-                height: 8px;
-                border-radius: 50%;
-                background-color: #e42626;
-                border: 3px solid #ffffff;
-                position: absolute;
-                top: 18px;
-                right: 16px;
-                box-sizing: content-box;
-            }
-            &>svg{
-                width: 22px;
-                height:18px;
-                fill:$icons_grey;
-            }
-        }
-        &>.user_panel{
-            width:256px;
-            height:66px;
-            margin-left:6px;
-            background-color:$base_white;
-            border-radius:5px;
-            cursor: pointer;
-            &>figure{
-                width: 46px;
-                height: 46px;
-                overflow: hidden;
-                margin:0 0 0 17px;
-                &>img{
-                    height:100%;
-                }
-            }
-            &>p{
-                color: $text_grey;
-            }
-        }
-    }
+  }
 }

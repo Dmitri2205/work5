@@ -10,6 +10,8 @@
     }
     &__modalBody{
         color: black;
+        padding-left:30px;
+        padding-right:30px;
         .modalBody__form{
             .form__selectGroup{
                 margin-bottom: 32px;
@@ -33,13 +35,11 @@
             }
             .form__input{
                 border:none;
-                    &>.invalid{
-                        border-color: crimson;
-                        &+input{
-                            border-color: crimson;
-                            box-shadow:0 0 0 .25rem crimson;
-                        }
-                    }
+                p{
+                    font-size: 14px;
+                    font-weight: bold;
+                    margin-bottom: 8px;
+                }
                 & input{
                     background-color: $icons_white;
                     &:focus{
@@ -74,6 +74,8 @@
         }
     }
     &__footer{
+        padding-left:30px;
+        padding-right:30px;
         button{
             background-color: $button_green;
             border:none;
