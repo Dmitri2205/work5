@@ -1,24 +1,48 @@
 @import "styles/colors_variables.scss";
 
 .shops{
+    @media screen and (max-width:576px) {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+    }
     &__table{
         width: 100%;
         &>table{
         background-color: $base_white;
         padding:0 12px;
-        &>thead>tr>th{
-            border-bottom: none;;
+        &>thead{
+            @media screen and (max-width:576px) {
+                display: none;
+            }
+            &>tr>th{
+                border-bottom: none;;
+            }
         }
         &>tbody>tr{
             color:$text_grey;
+            @media screen and (max-width:576px) {
+                width: 100%;
+            }
             &>td.address{
                 min-width: 185px;
             }
             &:last-child>td{
                 border-bottom: none;
             }
-            &>td:last-child>button{
-                margin: 18px 8px 18px 0;
+            &>td:last-child{
+                @media screen and (max-width:576px) {
+                    display: flex;
+                    justify-content: center;
+                    border-bottom: 1px solid black;
+                }
+                &>button{
+                    margin: 18px 8px 18px 0;
+                    @media screen and (max-width:1024px) {
+                        width: 9rem;
+                        padding:8px;
+                    }
+                }
             }
         }
     }

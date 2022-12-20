@@ -4,7 +4,7 @@
     width: 100%;
     max-width: 618px;
     margin: 0 auto;
-    & button{
+    & button:not([aria-label="Close"]){
         max-width: 152px;
         width: 100%;
     }
@@ -32,6 +32,14 @@
                 }
             }
             .form__input{
+                border:none;
+                    &>.invalid{
+                        border-color: crimson;
+                        &+input{
+                            border-color: crimson;
+                            box-shadow:0 0 0 .25rem crimson;
+                        }
+                    }
                 & input{
                     background-color: $icons_white;
                     &:focus{

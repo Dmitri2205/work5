@@ -1,18 +1,21 @@
-import { Warning } from "../../img/icons/warning";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Button,
-  Dropdown,
-  DropdownButton,
   Form,
   InputGroup,
   Modal,
 } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Warning } from "../../img/icons/warning";
 import styles from "styles/createshop.module.scss";
 
-export const CreateShopModal = (props: any) => {
-  const { showModal, showHandler } = props;
+interface IModalProps {
+  showModal: boolean,
+  showHandler: React.Dispatch<React.SetStateAction<boolean>>,
+  addShop:(domain:string)=>void
+}
+
+export const CreateShopModal = ({showModal,showHandler,addShop}:IModalProps) => {
+  const [domainIsValid,setDomainIsValid] = useState<{isValid:boolean,val:string}>({isValid:true,val:''});
   const [formData, setFormData] = useState([
     {
       name: "Шаблон",
@@ -26,12 +29,34 @@ export const CreateShopModal = (props: any) => {
     },
   ]);
 
+
+  const handleForm = (name:string,e:React.ChangeEvent<HTMLSelectElement>) => {
+    const index = formData.findIndex((item:any)=>item.name === name)
+    console.log(index);
+    const newFormData = [...formData];
+    newFormData[index].value = e.target.value;
+    setFormData(newFormData);
+ }
+
+ const handleDomainInput = (e:React.ChangeEvent<HTMLInputElement>) =>{
+  const val = e.target.value.toLowerCase();
+  const isValid = !val.includes("work5") && !val.match(/\s/gm);
+  setTimeout(()=>{
+    setDomainIsValid({isValid,val})
+  },300)
+ }
+
+ const handleAdd = () => {
+  addShop(domainIsValid.val);
+  showHandler(false)
+ }
+
   return (
     <>
       <Modal
         dialogClassName={`${styles.createShop}`}
         show={showModal}
-        onHide={null}
+        onHide={():void=>showHandler(false)}
         centered
       >
         <Modal.Header closeButton className="border-bottom-0 pb-0 mb-5">
@@ -51,6 +76,7 @@ export const CreateShopModal = (props: any) => {
                       aria-label={name}
                       className="w-100%"
                       placeholder={name}
+                      onChange={(e:React.ChangeEvent<HTMLSelectElement>)=>handleForm(name,e)}
                     >
                       {options.map((option, o) => {
                         return (
@@ -65,10 +91,11 @@ export const CreateShopModal = (props: any) => {
               })}
             </div>
             <div className={`mb-5 ${styles.form__input}`}>
-              <InputGroup>
+              <InputGroup className={`${!domainIsValid.isValid ? "invalid" : ''}`}>
                 <Form.Control
                   placeholder="ivangrozny"
-                  aria-label="Recipient's username with two button addons"
+                  aria-label="Domain name"
+                  onChange={(e:React.ChangeEvent<HTMLInputElement>)=>{handleDomainInput(e)}}
                 />
                 <Button variant="outline-secondary">.work5.ru</Button>
               </InputGroup>
@@ -90,7 +117,9 @@ export const CreateShopModal = (props: any) => {
           <Button variant="secondary" onClick={(e) => showHandler(false)}>
             Отмена
           </Button>
-          <Button variant="primary" onClick={null}>
+          <Button variant="primary" onClick={(e)=>{
+            domainIsValid.isValid ? handleAdd() : undefined}}
+          >
             Создать
           </Button>
         </Modal.Footer>
