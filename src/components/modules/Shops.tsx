@@ -42,15 +42,15 @@ export default function Shops(props: any){
     return(
         <div className={styles.shops}>
              <Button 
-                className="d-inline-flex align-items-center border-0"
+                className="d-inline-flex align-items-center border-0 align-self-center"
                 onClick={(e: React.SyntheticEvent)=>modalHandler(!showModal)}
              >
                 <span>+</span><span>Создать магазин</span>
             </Button>
             <h4>Управление магазинами</h4>
-            <div className={styles.shops__table}>
-            <Table hover className="px-5">
-            <thead>
+            <div className={`${styles.shops__table}`}>
+            <Table className="px-0 px-sm-5">
+            <thead className="d-none d-sm-table-header-group">
                 <tr>
                 <th>№</th>
                 <th>Название</th>
@@ -64,12 +64,12 @@ export default function Shops(props: any){
                     const {id,name,address} = item;
                     return(
                         <tr key={id}
-                            className="align-middle"
+                            className="align-middle d-inline-flex flex-column flex-sm-row d-sm-table-row mb-5 mb-sm-0"
                         >
                             <td>{id}</td>
                             <td>{name}</td>
                             <td>{address}</td>
-                            <td>
+                            <td className="flex-column flex-sm-row">
                                 <Button className="d-inline-flex align-items-center border-0" onClick={e=>handleShopChange(id)}>
                                     <Pencil/>
                                     <span>Редактировать</span>

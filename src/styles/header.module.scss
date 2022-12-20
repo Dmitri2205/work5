@@ -5,7 +5,7 @@
     color: black;
     &__breadcrumbs>ol>li{
         display: inline-flex;
-        align-items: center;
+        align-items: baseline;
         font-size: 12px;
         color: $text_grey;
         &>a{

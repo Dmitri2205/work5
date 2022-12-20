@@ -16,11 +16,6 @@ import styles from "styles/sidebar.module.scss";
 export default function Sidebar() {
   const location = useLocation();
 
-  useEffect(() => {
-    
-    console.log(location.pathname)
-  }, []);
-
   const [links] = useState([
     {
       url: "/",
@@ -70,7 +65,7 @@ export default function Sidebar() {
   ]);
 
   return (
-    <div className={`d-flex flex-column col-3 ${styles.sidebar}`}>
+    <div className={`d-none d-lg-flex flex-column col-3 ${styles.sidebar}`}>
       <div className={`${styles.sidebar__header}`}>
         <Logo/>
       </div>

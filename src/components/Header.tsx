@@ -3,20 +3,22 @@ import {Envelop} from "../img/icons/envelope.jsx"
 import { Button,Breadcrumb } from "react-bootstrap";
 import avatar from "../img/avatar.png";
 import styles from "styles/header.module.scss";
-import { useLocation } from 'react-router-dom';
+import { Link, redirect, useLocation } from 'react-router-dom';
 
 export default function Header() {
 
   const location = useLocation();
 
   return (
-    <div className={`d-flex flex-row justify-content-between px-0 pt-4 pb-3 ${styles.header}`}>
-      <Breadcrumb className={styles.header__breadcrumbs}>
+    <div className={`d-flex flex-column-reverse flex-md-row justify-content-between px-0 pt-4 pb-3 col-sm-12 ${styles.header}`}>
+      <Breadcrumb className={`mt-4 mt-md-0 ${styles.header__breadcrumbs}`}>
         {location.pathname !== "/" ? 
         (
           <>
-          <Breadcrumb.Item href="#">Главная</Breadcrumb.Item>
-          <Breadcrumb.Item href="https://getbootstrap.com/docs/4.0/components/breadcrumb/">
+          <Breadcrumb.Item href="/">
+              Главная
+            </Breadcrumb.Item>
+          <Breadcrumb.Item href="#">
           {decodeURI(location.search.split("=")[1])}
         </Breadcrumb.Item>
           </>

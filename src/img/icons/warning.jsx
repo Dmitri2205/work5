@@ -9,7 +9,7 @@ return (
   x="0px"
   y="0px"
   viewBox="0 0 52 52"
-  style="enable-background:new 0 0 52 52;"
+  style={{}}
 >
   <g>
     <path

@@ -13,12 +13,12 @@ interface ILayout {
 
 export default function Layout(props: ILayout) {
   const { children } = props;
-  const [showCreateModal,setShowCreateModal] = useState(false);
+  const [showCreateModal,setShowCreateModal] = useState(true);
 
   return (
-    <div className={`d-flex ${styles.layout}`}>
+    <div className={`d-flex flex-column flex-sm-row col-12 ${styles.layout}`}>
       {children[1]}
-      <div className={`d-flex flex-column col-lg-9 ${styles.layout__content}`}>
+      <div className={`d-flex flex-column col-lg-9 col-12 ${styles.layout__content}`}>
         {children[0]}
         <Routes>
           <Route path="/" element={<HomePage/>} />

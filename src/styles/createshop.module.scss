@@ -1,0 +1,84 @@
+@import "styles/colors_variables.scss";
+
+.createShop{
+    width: 100%;
+    max-width: 618px;
+    margin: 0 auto;
+    & button{
+        max-width: 152px;
+        width: 100%;
+    }
+    &__modalBody{
+        color: black;
+        .modalBody__form{
+            .form__selectGroup{
+                margin-bottom: 32px;
+                &>label{
+                    &>p{
+                        font-size: 14px;
+                        font-weight: bold;
+                    }
+                    &>select{
+                        font-size: 12px;
+                        &:focus{
+                            border-color: $transparent_green;
+                            box-shadow:0 0 0 .25rem $transparent_green;
+                        }
+                        // color: $text_grey;
+                    }
+                    &:first-child{
+                        margin-right:86px;
+                    }   
+                }
+            }
+            .form__input{
+                & input{
+                    background-color: $icons_white;
+                    &:focus{
+                        border-color: $transparent_green;
+                        box-shadow:0 0 0 .25rem $transparent_green;
+                        border-left: 0;
+                        &+button{
+                            border: 1px solid $transparent_green;
+                            box-shadow: 0 0 0 .25rem $transparent_green;
+                        }
+                    }
+                }
+                & button{
+                    border-radius:2px;
+                    background-color: $base_purple;
+                    color:$base_white;
+                    
+                }
+            }
+            .form__warning{
+                font-size: 12px;
+                color: $text_grey;
+                & svg{
+                    width: 8rem;
+                    height:3rem;
+                    margin-right: 16px;
+                    fill:$base_purple;
+                } p{
+                    margin-bottom: 0;;
+                }
+            }
+        }
+    }
+    &__footer{
+        button{
+            background-color: $button_green;
+            border:none;
+            &:active,&:hover{
+                background-color: lighten($button_green,15%);
+            }
+            &:first-child{
+                background-color: $button_grey;
+                margin-right:8px;
+                &:active,&:hover{
+                background-color: lighten($button_grey,15%);
+            }
+            }
+        }
+    }
+}
