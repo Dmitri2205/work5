@@ -6,7 +6,7 @@ import styles from "styles/pages_styles/shops.module.scss";
 import {ITableItem} from "../Layout"
 
 export default function Shops(props: any){
-    const {modalHandler,showModal,tableItems,handleShopChange} = props;
+    const {modalHandler,showModal,tableItems,handleShopChange,removeShop} = props;
     
     return(
         <div className={styles.shops}>
@@ -43,9 +43,9 @@ export default function Shops(props: any){
                                     <Pencil/>
                                     <span>Редактировать</span>
                                 </Button>
-                                <Button className="d-inline-flex align-items-center border-0">
+                                <Button className="d-inline-flex align-items-center border-0" onClick={e=>{removeShop(id)}}>
                                     <Cancel/>
-                                    <span>Редактировать</span>
+                                    <span>Удалить</span>
                                 </Button>
                             </td>
                         </tr>

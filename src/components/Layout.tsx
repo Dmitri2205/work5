@@ -57,6 +57,12 @@ const addShop = (domain:string) => {
   setTableItems(newTableItems);
 }
 
+const removeShop = (idx:number) => {
+  const newList = [...tableItems];
+  const shopIndex = newList.findIndex((item: ITableItem)=>item.id === idx);
+  newList.splice(shopIndex,1);
+  setTableItems(newList)
+}
   return (
     <div className={`d-flex flex-column flex-sm-row col-12 ${styles.layout}`}>
       {children[1]}
@@ -70,13 +76,18 @@ const addShop = (domain:string) => {
               showModal={showCreateModal}
               handleShopChange={handleShopChange}
               tableItems={tableItems}
+              removeShop={removeShop}
               />}
            />
           <Route path="/promo" element={<Promo />} />
           <Route path="/stats" element={<Stats />} />
         </Routes>
       </div>
-      <CreateShopModal showModal={showCreateModal} showHandler={setShowCreateModal} addShop={addShop}/>
+      <CreateShopModal 
+        showModal={showCreateModal}
+        showHandler={setShowCreateModal}
+        addShop={addShop}
+      />
     </div>
   );
 }
